@@ -8,7 +8,9 @@ export const { Provider } = AppContext;
 
 export default function AppProvider({ children }: I.AppProviderProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([1]);
+
+  const cartItemsLength = cartItems.length;
 
   const handleOpenCart = useCallback(() => setIsCartOpen(true), []);
   const handleCloseCart = useCallback(() => setIsCartOpen(false), []);
@@ -19,6 +21,8 @@ export default function AppProvider({ children }: I.AppProviderProps) {
     handleCloseCart,
     handleToggleCart,
     isCartOpen,
+
+    cartItemsLength,
   });
 
   return <Provider value={AppProviderValues}>{children}</Provider>

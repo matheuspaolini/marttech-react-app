@@ -5,6 +5,8 @@ export interface AppContextProps {
   handleCloseCart: () => void;
   handleToggleCart: () => void;
   isCartOpen: boolean;
+
+  cartItemsLength: number;
 }
 
 export interface AppProviderProps {

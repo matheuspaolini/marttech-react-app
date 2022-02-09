@@ -10,6 +10,10 @@ export const Container = styled.div`
 
 export const Username = styled.div`
   font-size: 1.25rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Image = styled.div`
@@ -35,8 +39,8 @@ export const Cart = styled.button<{ isNotEmpty?: boolean }>`
     top: -0.75rem;
     right: -0.75rem;
 
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
 
     background: red;
 
@@ -46,6 +50,6 @@ export const Cart = styled.button<{ isNotEmpty?: boolean }>`
 
 
 
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
   }
 `;

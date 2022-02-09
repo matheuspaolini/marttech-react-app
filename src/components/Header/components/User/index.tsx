@@ -8,19 +8,18 @@ import { BiCart } from 'react-icons/bi';
 import { AppContext } from 'context/App';
 
 export default function User({  }: I.UserProps) {
-  const { handleOpenCart } = useContext(AppContext);
+  const { handleOpenCart, cartItemsLength } = useContext(AppContext);
 
-  const itemsLength = 99;
-  const isNotEmpty = !!itemsLength;
+  const isNotEmpty = !!cartItemsLength;
   
   return (
     <S.Container>
       <S.Cart 
         isNotEmpty={isNotEmpty}
-        data-items-length={itemsLength}
+        data-items-length={cartItemsLength}
         onClick={handleOpenCart}
       >
-        <BiCart size="2rem" />
+        <BiCart size="2.125rem" />
       </S.Cart>
 
       <S.Username>Matheus</S.Username>

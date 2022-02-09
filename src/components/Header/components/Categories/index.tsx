@@ -1,9 +1,9 @@
+import { useCallback, useState } from 'react';
+
 import * as S from './styles';
 import * as I from './interfaces';
 
 import categories from '__mock__/categories.json';
-import { useState } from 'react';
-import { useCallback } from 'react';
 
 export default function Categories({  }: I.CategoriesProps) {
   const categoriesLength = categories.length;

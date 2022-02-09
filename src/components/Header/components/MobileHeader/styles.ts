@@ -18,41 +18,48 @@ export const Main = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
 `;
 
-export const Middle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+export const Menu = styled.button``;
 
-export const Anchors = styled.div`
+export const List = styled.div<{ isOpen?: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: ${({ isOpen }) => isOpen ? '100%' : 0};
   width: 100%;
-  max-width: 25rem;
 
-  height: 100%;
+  opacity: ${({ isOpen }) => isOpen ? 1 : 0};
+
+  padding-top: 2rem;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.5rem;
 
-  margin: 0 3rem;
+  background: white;
+
+  overflow: hidden;
+
+  transition: 0.25s ease;
 `;
 
 export const Anchor = styled.div`
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 
   cursor: pointer;
 
-  text-transform: capitalize;
-
-  height: 100%;
   width: 100%;
+  height: 4rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  text-transform: capitalize;
 
   :hover {
     background: black;
@@ -60,11 +67,4 @@ export const Anchor = styled.div`
   }
 `;
 
-export const Right = styled.div`
-  height: 100%;
-  width: 12rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center
-`;
+export const Close = styled.button``;
