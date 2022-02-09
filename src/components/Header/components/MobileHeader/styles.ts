@@ -44,7 +44,7 @@ export const List = styled.div<{ isOpen?: boolean }>`
 
   overflow: hidden;
 
-  transition: 0.25s ease;
+  transition: 0.5s ease;
 `;
 
 export const Anchor = styled.div`

@@ -9,7 +9,7 @@ import EmptyCart from './components/EmptyCart';
 import CartItem from './components/CartItem';
 
 export default function Cart({  }: I.CartProps) {
-  const { isCartOpen, handleCloseCart, cartItemsLength } = useContext(AppContext);
+  const { isCartOpen, handleCloseCart, cartItemsLength, cartItems } = useContext(AppContext);
 
   return (
     <S.Container isCartOpen={isCartOpen}>
@@ -27,9 +27,9 @@ export default function Cart({  }: I.CartProps) {
         <S.Items>
           {!cartItemsLength && <EmptyCart />}
 
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {cartItems.map(({ id, title, price, image }) => (
+            <CartItem key={title + id} id={id} title={title} price={price} image={image} />
+          ))}
         </S.Items>
       </S.Main>
     </S.Container>

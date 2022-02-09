@@ -9,7 +9,6 @@ export const Container = styled.div`
   height: 100%;
 
   padding: 2rem;
-  margin: 2rem 0;
 
   color: lightgray;
   
@@ -21,4 +20,8 @@ export const Message = styled.div`
   font-size: 2rem;
 
   white-space: nowrap;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.25rem;
+  }
 `;

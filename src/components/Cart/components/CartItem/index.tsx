@@ -1,27 +1,35 @@
+import { useContext, useCallback } from 'react';
+
 import * as S from './styles';
 import * as I from './interfaces';
 
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+
 import Quantity from './components/Quantity';
 
-export default function CartItem({  }: I.CartItemProps) {
+import { AppContext } from 'context/App';
+
+export default function CartItem({ id, title, price, image }: I.CartItemProps) {
+  const { removeCartItem } = useContext(AppContext);
+
+  const handleRemoveCartItem = useCallback(() => removeCartItem(id), [removeCartItem]);
+
   return (
     <S.Container>
       <S.Flex>
-        <S.Image />
+        <S.Image draggable={false} src={image} />
   
         <S.Wrapper>
-          <S.Name title="Camiseta">Camiseta</S.Name>
-          <S.Price>R$ 30,00</S.Price>
+          <S.Name title={title}>{title}</S.Name>
+          <S.Price>R$ {price}</S.Price>
           {/* <S.Subtotal>Subtotal: R$ 30,00</S.Subtotal> */}
         </S.Wrapper>
       </S.Flex>
 
-
       <S.Flex>
-        <Quantity />
+        <Quantity id={id} />
         
-        <S.Delete>
+        <S.Delete onClick={handleRemoveCartItem}>
           <AiOutlineCloseCircle size={24} />
         </S.Delete>
       </S.Flex>
