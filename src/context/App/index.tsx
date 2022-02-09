@@ -30,6 +30,20 @@ export default function AppProvider({ children }: I.AppProviderProps) {
       image: 'https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg',
       quantity: 1,
     },
+    {
+      id: 19,
+      title: 'Opna Women\'s Short Sleeve Moisture',
+      price: 7.95,
+      image: 'https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg',
+      quantity: 1,
+    },
+    {
+      id: 4,
+      title: 'Mens Casual Slim Fit',
+      price: 15.99,
+      image: 'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
+      quantity: 1,
+    },
   ]);
 
   const cartItemsLength = cartItems.length;

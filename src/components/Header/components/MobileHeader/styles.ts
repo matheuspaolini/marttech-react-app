@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.nav`
+  position: fixed;
+
+  z-index: 5;
+
   width: 100%;
 
   border-bottom: 0.125rem solid lightgray;
+
+  background: white;
 `;
 
 export const Main = styled.div`
@@ -27,6 +33,8 @@ export const List = styled.div<{ isOpen?: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
+
+  z-index: 7;
 
   height: ${({ isOpen }) => isOpen ? '100%' : 0};
   width: 100%;

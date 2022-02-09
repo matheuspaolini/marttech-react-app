@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div<{ isCartOpen?: boolean }>`
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
 
-  z-index: 2;
+  z-index: 10;
 
   width: 100%;
   height: 100%;

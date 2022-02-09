@@ -34,9 +34,9 @@ export default function Header({ }: I.HeaderProps) {
           <S.Anchor>Contact</S.Anchor>
         </S.Anchors>
 
-        <S.Right /* onClick={() => setIsAuth((previous) => !previous)} */ >
+        <S.Wrapper /* onClick={() => setIsAuth((previous) => !previous)} */ >
           {isAuth ? <User /> : <AuthMenu />}
-        </S.Right>
+        </S.Wrapper>
       </S.Main>
     </S.Container>
   );

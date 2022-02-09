@@ -32,8 +32,8 @@ export const Flex = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: auto;
 `;
 
 export const Wrapper = styled.div``;

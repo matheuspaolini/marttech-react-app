@@ -1,8 +1,8 @@
 import * as S from './styles';
 import * as I from './interfaces';
 
-export default function Logo({  }: I.LogoProps) {
+export default function Logo({ fontSize = '2rem' }: I.LogoProps) {
   return (
-    <S.Logo>MShop</S.Logo>
+    <S.Logo style={{ fontSize }}>MShop</S.Logo>
   );
 }

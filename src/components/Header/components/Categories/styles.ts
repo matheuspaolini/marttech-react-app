@@ -38,6 +38,8 @@ export const List = styled.ul<{ length: number; isOpen: boolean }>`
 
   opacity: ${({ isOpen }) => isOpen ? 1 : 0};
 
+  background: white;
+
   transition: 0.25s ease;
 
   overflow: hidden;
@@ -56,6 +58,8 @@ export const Item = styled.li`
   justify-content: center;
 
   text-transform: capitalize;
+
+  background: white;
 
   cursor: pointer;
 

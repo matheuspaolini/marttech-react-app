@@ -8,6 +8,8 @@ const StylesProvider = createGlobalStyle`
     font-family: 'Roboto Condensed', sans-serif;
 
     box-sizing: border-box;
+
+    transition: 0.15s ease;
   }
 
   html, body, #root {

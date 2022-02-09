@@ -6,4 +6,6 @@ export const Logo = styled.h1`
   padding-left: 0.5rem;
 
   font-size: 2rem;
+
+  color: black;
 `;

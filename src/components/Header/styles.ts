@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.nav`
+  position: fixed;
+
   width: 100%;
 
   border-bottom: 0.125rem solid lightgray;
+
+  background: white;
+
+  z-index: 5;
 `;
 
 export const Main = styled.div`
@@ -60,7 +66,7 @@ export const Anchor = styled.div`
   }
 `;
 
-export const Right = styled.div`
+export const Wrapper = styled.div`
   height: 100%;
   width: 12rem;
 
