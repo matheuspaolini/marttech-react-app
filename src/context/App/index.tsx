@@ -72,10 +72,6 @@ export default function AppProvider({ children }: I.AppProviderProps) {
     setCartItems(previousCartItems);
   }, [cartItems]);
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
-
   const AppProviderValues = ({
     handleOpenCart,
     handleCloseCart,
