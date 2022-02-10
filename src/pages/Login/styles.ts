@@ -14,7 +14,7 @@ export const Container = styled.div`
   padding: 1rem;
 `;
 
-export const Main = styled.div`
+export const Main = styled.form`
   width: 100%;
   max-width: 20rem;
 
@@ -77,4 +77,11 @@ export const Register = styled.button`
   font-size: 1rem;
 
   text-decoration: underline;
+`;
+
+export const Back = styled.a`
+  margin-top: 1rem;
+
+  display: flex;
+  align-items: center;
 `;

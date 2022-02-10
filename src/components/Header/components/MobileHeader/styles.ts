@@ -30,7 +30,7 @@ export const Main = styled.div`
 export const Menu = styled.button``;
 
 export const List = styled.div<{ isOpen?: boolean }>`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 
@@ -55,7 +55,7 @@ export const List = styled.div<{ isOpen?: boolean }>`
   transition: 0.5s ease;
 `;
 
-export const Anchor = styled.div`
+export const Anchor = styled.a`
   font-size: 1.5rem;
 
   cursor: pointer;

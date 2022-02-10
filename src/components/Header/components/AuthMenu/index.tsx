@@ -4,9 +4,11 @@ import * as I from './interfaces';
 export default function AuthMenu({  }: I.AuthMenuProps) {
   return (
     <S.Container>
-      <S.Field>Enter</S.Field>
+      <S.Anchor href="/auth/login">Enter</S.Anchor>
+
       <S.Field>/</S.Field>
-      <S.Field>Register</S.Field>
+
+      <S.Anchor href="/auth/register">Register</S.Anchor>
     </S.Container>
   );
 }

@@ -24,10 +24,17 @@ export const Main = styled.div`
   padding-bottom: 2rem;
 `;
 
-export const Rectangle = styled.div`
+export const Banner = styled.img`
+  height: auto;
+  width: 100%;
+  max-width: 40rem;
+
+  padding: 2rem;
+`;
+
+export const BannerSection = styled.div`
   position: relative;
 
-  border: 0.125rem solid lightgray;
   border-radius: 0.5rem;
 
   display: flex;
@@ -49,19 +56,16 @@ export const Rectangle = styled.div`
 `;
 
 export const InnerText = styled.h1<{ removeBold?: boolean; opacity?: number; fontSize?: string }>`
-  font-size: ${({ fontSize }) => fontSize ? fontSize : '3.5rem'};
-  font-weight: ${({ removeBold }) => removeBold && 400};
+  font-size: 3rem;
+  font-weight: normal;
 
-  opacity: ${({ opacity }) => opacity};
+  white-space: nowrap;
 
-  text-align: center;
-
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  color: rgba(0, 0, 0, 0.125);
 
   @media screen and (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    padding: 1rem;
   }
 `;
 

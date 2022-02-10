@@ -5,10 +5,11 @@ import * as I from './interfaces';
 
 import Header from 'components/Header';
 
+import banner from 'assets/banner.svg';
+
 import products from '__mock__/products.json';
 
 import ProductItem from 'components/ProductItem';
-import { BsClockHistory } from 'react-icons/bs';
 
 export default function Home({  }: I.HomeProps) {
   const [showMore, setShowMore] = useState(false);
@@ -23,14 +24,10 @@ export default function Home({  }: I.HomeProps) {
 
       <S.Container>
         <S.Main>
-          <S.Rectangle>
-            <S.InnerText>Buy Everything!</S.InnerText>
-
-            <S.InnerText removeBold fontSize="2.5rem">
-              <BsClockHistory />
-              At any time!
-            </S.InnerText>
-          </S.Rectangle>
+          <S.BannerSection>
+            <S.Banner src={banner} draggable={false} />
+            <S.InnerText>Buy everything!</S.InnerText>
+          </S.BannerSection>
 
           <S.Section>
             <S.Title>ALL PRODUCTS</S.Title>
@@ -38,6 +35,7 @@ export default function Home({  }: I.HomeProps) {
             <S.List>
               {currentProducts.map(({ id, title, price, image, category }) =>
                 <ProductItem
+                  key={title}
                   id={id}
                   title={title}
                   price={price}

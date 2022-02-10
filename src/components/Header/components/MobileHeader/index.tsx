@@ -8,17 +8,30 @@ import categories from '__mock__/categories.json';
 
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from 'context/Auth';
+import AuthMenu from '../AuthMenu';
 
 export default function MobileHeader({  }: I.MobileHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { isAuthenticated } = useContext(AuthContext);
 
   const handleOpenMenu = useCallback(() => setIsMenuOpen(true), []);
   const handleCloseMenu = useCallback(() => setIsMenuOpen(false), []);
 
   const bodyElement = document.body;
+
+  const navigate = useNavigate();
+
+  const handleNavigate = useCallback((category: string) => {
+    navigate('/categories', { state: { category } });
+    setIsMenuOpen(false);
+  }, []);
   
   return (
     <>
@@ -29,18 +42,26 @@ export default function MobileHeader({  }: I.MobileHeaderProps) {
           </S.Menu>
 
           <Logo />
+
         </S.Main>
       </S.Container>
 
       {createPortal(
         <S.List isOpen={isMenuOpen}>
-          <User />
+          {isAuthenticated ? <User /> : <AuthMenu />}
   
-          <S.Anchor>Home</S.Anchor>
+          <S.Anchor href="/">Home</S.Anchor>
   
-          {categories.map((category) => <S.Anchor key={category}>{category}</S.Anchor>)}
+          {categories.map((category) =>
+            <S.Anchor
+              key={category}
+              onClick={() => handleNavigate(category)}
+            >
+              {category}
+            </S.Anchor>)}
   
-          <S.Anchor>Contact</S.Anchor>
+          <S.Anchor href="/contact">Contact</S.Anchor>
+          <S.Anchor href="/orders">Orders</S.Anchor>
   
           <S.Close onClick={handleCloseMenu}>
             <AiOutlineCloseCircle size={32} />

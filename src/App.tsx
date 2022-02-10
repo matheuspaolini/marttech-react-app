@@ -1,18 +1,14 @@
-import Home from 'pages/Home';
-
 import Cart from 'components/Cart';
 
 import StylesProvider from 'styles/global';
-import Login from 'pages/Login';
-import Register from 'pages/Register';
+
+import AppRoutes from 'routes/AppRoutes';
 
 export default function App() {
   return (
     <>
       <StylesProvider />
-      
-      <Register />
-
+      <AppRoutes />
       <Cart />
     </>
   );

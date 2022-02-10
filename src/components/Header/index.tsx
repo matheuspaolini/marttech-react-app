@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+
+import { AuthContext } from 'context/Auth';
 
 import * as S from './styles';
 import * as I from './interfaces';
@@ -13,12 +15,12 @@ import AuthMenu from './components/AuthMenu';
 import MobileHeader from './components/MobileHeader';
 
 export default function Header({ }: I.HeaderProps) {
+  const { isAuthenticated } = useContext(AuthContext);
+
   const { width } = useWindowSize();
 
   const isMediumDevice = !!width && width <= 768;
-
-  const [isAuth, setIsAuth] = useState(true);
-
+  
   if (isMediumDevice) return <MobileHeader />
 
   return (
@@ -27,15 +29,16 @@ export default function Header({ }: I.HeaderProps) {
         <Logo />
 
         <S.Anchors>
-          <S.Anchor>Home</S.Anchor>
+          <S.Anchor href="/">Home</S.Anchor>
 
           <Categories />
 
-          <S.Anchor>Contact</S.Anchor>
+          <S.Anchor href="/contact">Contact</S.Anchor>
+          <S.Anchor href="/orders">Orders</S.Anchor>
         </S.Anchors>
 
-        <S.Wrapper /* onClick={() => setIsAuth((previous) => !previous)} */ >
-          {isAuth ? <User /> : <AuthMenu />}
+        <S.Wrapper>
+          {isAuthenticated ? <User /> : <AuthMenu />}
         </S.Wrapper>
       </S.Main>
     </S.Container>

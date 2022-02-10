@@ -45,7 +45,7 @@ export const List = styled.ul<{ length: number; isOpen: boolean }>`
   overflow: hidden;
 `;
 
-export const Item = styled.li`
+export const Item = styled.a`
   font-size: 1.25rem;
 
   width: 11rem;

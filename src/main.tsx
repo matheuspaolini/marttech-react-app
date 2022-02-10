@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
-
 import AppProvider from 'context/App';
 import AuthProvider from 'context/Auth';
+
+import App from 'App';
 
 ReactDOM.render(
   <React.StrictMode>

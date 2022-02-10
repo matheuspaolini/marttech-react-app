@@ -35,7 +35,7 @@ export const Middle = styled.div`
 
 export const Anchors = styled.div`
   width: 100%;
-  max-width: 25rem;
+  max-width: 30rem;
 
   height: 100%;
 
@@ -46,7 +46,7 @@ export const Anchors = styled.div`
   margin: 0 3rem;
 `;
 
-export const Anchor = styled.div`
+export const Anchor = styled.a`
   font-size: 1.25rem;
 
   cursor: pointer;
