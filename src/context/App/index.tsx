@@ -26,6 +26,21 @@ export default function AppProvider({ children }: I.AppProviderProps) {
 
   const cleanUpCartItems = useCallback(() => setCartItems([]), []);
 
+  const insertOrderInLocalStorage = useCallback((order: I.Order) => {
+    const stringfiedOrders = localStorage.getItem('_orders');
+
+    if (!stringfiedOrders)
+      return localStorage.setItem('_orders', '[' + JSON.stringify(order) + ']');
+
+    const previousOrders: I.Order[] = JSON.parse(stringfiedOrders);
+
+    const newOrders = ([...previousOrders, order]);
+
+    const stringfiedNewOrders = JSON.stringify(newOrders);
+
+    localStorage.setItem('_orders', stringfiedNewOrders);
+  }, []);
+
   const removeCartItem = useCallback((id: number) => {
     if (!isAuthenticated) return;
 
@@ -87,6 +102,7 @@ export default function AppProvider({ children }: I.AppProviderProps) {
     createOrder(order);
     cleanUpCartItems();
     setIsCartOpen(false);
+    insertOrderInLocalStorage(order);
   }, [cartItems]);
 
   useEffect(() => {
@@ -100,6 +116,16 @@ export default function AppProvider({ children }: I.AppProviderProps) {
   useEffect(() => {
     updateCart(email, cartItems);
   }, [cartItems]);
+
+  useEffect(() => {
+    const stringfiedOrders = localStorage.getItem('_orders');
+
+    if (!stringfiedOrders) return localStorage.setItem('_orders', '');
+
+    const orders: I.Order[] = JSON.parse(stringfiedOrders);
+
+    setOrders(orders);
+  }, []);
 
   const AppProviderValues = ({
     handleOpenCart,

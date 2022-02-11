@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import { AuthContext } from 'context/Auth';
 
@@ -13,7 +13,6 @@ import Categories from './components/Categories';
 import User from './components/User';
 import AuthMenu from './components/AuthMenu';
 import MobileHeader from './components/MobileHeader';
-import { Link } from 'react-router-dom';
 
 export default function Header({ }: I.HeaderProps) {
   const { isAuthenticated } = useContext(AuthContext);
@@ -34,7 +33,6 @@ export default function Header({ }: I.HeaderProps) {
 
           <Categories />
 
-          <S.Anchor to="/contact">Contact</S.Anchor>
           <S.Anchor to="/orders">Orders</S.Anchor>
         </S.Anchors>
 

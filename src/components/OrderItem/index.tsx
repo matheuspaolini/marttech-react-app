@@ -18,7 +18,7 @@ export default function OrderItem({ order }: I.OrderItemProps) {
     <S.Container>
       <S.Main>
         <S.Wrapper>
-          <S.Field strong>#{order.createdAt.getTime()}</S.Field>
+          <S.Field strong>#{new Date(order.createdAt).getTime()}</S.Field>
           <S.Field>{order.account.city}</S.Field>
         </S.Wrapper>
 

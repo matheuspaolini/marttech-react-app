@@ -22,7 +22,7 @@ export default function CartItem({ id, title, price, image, quantity }: I.CartIt
         <S.Wrapper>
           <S.Name title={title}>{title}</S.Name>
           <S.Price>$ {price}</S.Price>
-          <S.Subtotal>x {quantity} = $ {price * quantity} </S.Subtotal>
+          <S.Subtotal>x {quantity} = $ {(price * quantity).toFixed(2)} </S.Subtotal>
         </S.Wrapper>
       </S.Flex>
 

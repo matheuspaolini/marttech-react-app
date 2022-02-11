@@ -60,7 +60,6 @@ export default function MobileHeader({  }: I.MobileHeaderProps) {
               {category}
             </S.CategoryAnchor>)}
   
-          <S.Anchor to="/contact">Contact</S.Anchor>
           <S.Anchor to="/orders">Orders</S.Anchor>
   
           <S.Close onClick={handleCloseMenu}>
