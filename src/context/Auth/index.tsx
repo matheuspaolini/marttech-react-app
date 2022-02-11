@@ -149,8 +149,6 @@ export default function AuthProvider({ children }: I.AuthProviderProps) {
     
     const accounts: I.Account[] = JSON.parse(stringfiedAccounts);
 
-    console.log(accounts);
-
     setAccounts(accounts);
   }, []);
 
