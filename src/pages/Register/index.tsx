@@ -66,32 +66,32 @@ export default function Register({  }: I.AuthProps) {
 
         <S.Wrapper>
           <S.Label>Name</S.Label>
-          <S.Input name="username" type="text" defaultValue="Matheus" />
+          <S.Input name="username" type="text" />
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>E-mail</S.Label>
-          <S.Input name="email" type="email" defaultValue="matheus@gmail.com" />
+          <S.Input name="email" type="email" />
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>City</S.Label>
-          <S.Input name="city" type="text" defaultValue="Curitiba" />
+          <S.Input name="city" type="text" />
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>CPF</S.Label>
-          <S.Input name="cpf" type="text" defaultValue="172.470.090-12" /> {/* Random CPF */}
+          <S.Input name="cpf" type="text" /> {/* Random CPF */}
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>Password</S.Label>
-          <S.Input name="password" type="password" defaultValue="123123" />
+          <S.Input name="password" type="password" />
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>Confirm Password</S.Label>
-          <S.Input name="confirmPassword" type="password" defaultValue="123123" />
+          <S.Input name="confirmPassword" type="password" />
         </S.Wrapper>
 
         <S.Button onClick={handleSubmit}>REGISTER</S.Button>
