@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef, MouseEvent } from 'react';
+import { useCallback, useContext, useRef, MouseEvent, useEffect } from 'react';
 
 import * as S from './styles';
 import * as I from './interfaces';
@@ -9,9 +9,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from 'context/Auth';
 
 import { GoArrowSmallLeft } from 'react-icons/go';
+import { toast } from 'react-toastify';
 
 export default function Login({  }: I.AuthProps) {
-  const { accessAccount, isAuthenticated } = useContext(AuthContext);
+  const { accounts, accessAccount, isAuthenticated } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -26,12 +27,31 @@ export default function Login({  }: I.AuthProps) {
 
     const { email, password } = form;
 
+    const accountExists = accounts.find((account) => account.email === email.value);
+
+    if (!accountExists) {
+      toast.error('Incorrect e-mail or password.');
+
+      return;
+    }
+
+    const isPasswordIncorrect = accountExists.password !== password.value;
+    const isEmailIncorrect = accountExists.email !== email.value;
+
+    if (isPasswordIncorrect || isEmailIncorrect) {
+      toast.error('Incorrect e-mail or password.');
+
+      return;
+    };
+
     const account = ({ email: email.value, password: password.value });
 
     accessAccount(account);
-  }, [accessAccount]);
+  }, [accessAccount, accounts]);
 
-  if (isAuthenticated) navigate('/');
+  useEffect(() => {
+    isAuthenticated && navigate('/');
+  }, [isAuthenticated]);
 
   return (
     <S.Container>
@@ -57,7 +77,7 @@ export default function Login({  }: I.AuthProps) {
         <S.Register>Don't have an account?</S.Register>
       </Link>
 
-      <S.Back href="/">
+      <S.Back to="/">
         <GoArrowSmallLeft size="1.5rem" />
         Back to Home page.
       </S.Back>

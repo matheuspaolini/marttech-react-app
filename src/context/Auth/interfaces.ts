@@ -1,5 +1,5 @@
 import { CartItem } from 'context/App/interfaces';
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export interface AuthProviderProps {
   children: ReactNode;
@@ -7,11 +7,17 @@ export interface AuthProviderProps {
 
 export interface AuthContextProps {
   email: string;
-  isAuthenticated: boolean;
+  setEmail: Dispatch<SetStateAction<string>>;
 
-  accounts: Account[];
-  createAccount: (account: Account) => void;
+  isAuthenticated: boolean;
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
+
   accessAccount: ({ email, password }: AccessAccountForm) => void;
+  exitAccount: () => void;
+  createAccount: (account: Account) => void;
+  accounts: Account[];
+
+  updateCart: (email: string, cartItems: CartItem[]) => void;
 }
 
 export interface Account {
@@ -19,9 +25,11 @@ export interface Account {
   password: string;
   email: string;
   cpf: string;
-  address: string;
+  city: string;
   cartItems: CartItem[];
 }
+
+
 
 export interface AccessAccountForm {
   email: string;

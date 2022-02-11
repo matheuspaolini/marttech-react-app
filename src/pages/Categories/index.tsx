@@ -1,28 +1,26 @@
 import Header from 'components/Header';
 
 import * as S from './styles';
+import * as I from './interfaces';
 
 import { useLocation } from 'react-router-dom';
 
 import categories from '__mock__/categories.json';
 import products from '__mock__/products.json';
-import ProductItem from 'components/ProductItem';
 
-interface LocationState {
-  category: string;
-  [key: string]: string;
-}
+import ProductItem from 'components/ProductItem';
 
 export default function Categories() {
   const location = useLocation();
 
   const firstCategoryFromEnum = categories.at(0);
-  const { category } = location?.state as LocationState ?? '';
+  const { category } = location?.state as I.LocationState ?? '';
 
   const currentCategory = category ?? firstCategoryFromEnum;
 
-  const productsByCategory = products
-    .filter((product) => product.category === currentCategory);
+  const productsByCategory = products.filter(
+    (product) => product.category === currentCategory
+  );
 
   return (
     <>
@@ -30,7 +28,7 @@ export default function Categories() {
 
       <S.Container>
         <S.Main>
-        <S.Section>
+          <S.Section>
             <S.Title>{currentCategory}</S.Title>
 
             <S.List>

@@ -46,12 +46,27 @@ export const Title = styled.h1`
   }
 `;
 
+export const Search = styled.input`
+  width: calc(100% - 4rem);
+  height: 2.5rem;
+
+  border: 0.125rem solid lightgray;
+  border-radius: 0.25rem;
+
+  margin: 0 auto;
+
+  padding-left: 0.5rem;
+
+  font-size: 1rem;
+`;
+
 export const List = styled.div`
   width: 100%;
+  height: 100%;
 
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 0.5rem;
 
   padding: 0 2rem;
 

@@ -52,7 +52,7 @@ export const Price = styled.div`
   font-size: 1.25rem;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<{ isOnCart?: boolean }>`
   margin-top:  0.5rem;
 
   width: 100%;
@@ -63,13 +63,13 @@ export const Button = styled.button`
 
   color: white;
 
-  background: black;
+  background: ${({ isOnCart }) => isOnCart ? 'lightgray' : 'black'};
 
   border-radius: 0.25rem;
 
   transition: 0.25s ease;
 
   :hover {
-    background: darkgray;
+    background: ${({ isOnCart }) => !isOnCart && 'darkgray'};
   }
 `;

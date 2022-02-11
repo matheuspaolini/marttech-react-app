@@ -44,6 +44,10 @@ export const Main = styled.div<{ isCartOpen?: boolean }>`
 
   background: white;
 
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
   box-shadow: -0.25rem 0 1rem rgba(0, 0, 0, 0.25);
 
   transition: 0.35s;
@@ -80,11 +84,35 @@ export const Close = styled.button`
 export const Items = styled.div`
   padding: 1rem 0;
 
-  height: calc(100% - 2rem - 28px);
+  height: calc(100% - 2rem - 28px - 2.5rem);
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 1rem;
+
+  overflow-y: scroll;
+`;
+
+export const Finish = styled.button`
+  margin-top: 1.5rem;
+
+  width: 100%;
+  min-height: 2.5rem;
+
+  font-size: 1.125rem;
+  font-weight: bold;
+
+  color: white;
+
+  background: black;
+
+  border-radius: 0.25rem;
+
+  transition: 0.25s ease;
+
+  :hover {
+    background: darkgray;
+  }
 `;

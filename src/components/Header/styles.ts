@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.nav`
@@ -46,7 +47,7 @@ export const Anchors = styled.div`
   margin: 0 3rem;
 `;
 
-export const Anchor = styled.a`
+export const Anchor = styled(Link)`
   font-size: 1.25rem;
 
   cursor: pointer;

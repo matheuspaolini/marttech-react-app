@@ -13,6 +13,7 @@ import Categories from './components/Categories';
 import User from './components/User';
 import AuthMenu from './components/AuthMenu';
 import MobileHeader from './components/MobileHeader';
+import { Link } from 'react-router-dom';
 
 export default function Header({ }: I.HeaderProps) {
   const { isAuthenticated } = useContext(AuthContext);
@@ -29,12 +30,12 @@ export default function Header({ }: I.HeaderProps) {
         <Logo />
 
         <S.Anchors>
-          <S.Anchor href="/">Home</S.Anchor>
+          <S.Anchor to="/">Home</S.Anchor>
 
           <Categories />
 
-          <S.Anchor href="/contact">Contact</S.Anchor>
-          <S.Anchor href="/orders">Orders</S.Anchor>
+          <S.Anchor to="/contact">Contact</S.Anchor>
+          <S.Anchor to="/orders">Orders</S.Anchor>
         </S.Anchors>
 
         <S.Wrapper>

@@ -26,7 +26,6 @@ export default function Home({  }: I.HomeProps) {
         <S.Main>
           <S.BannerSection>
             <S.Banner src={banner} draggable={false} />
-            <S.InnerText>Buy everything!</S.InnerText>
           </S.BannerSection>
 
           <S.Section>

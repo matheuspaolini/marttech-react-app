@@ -50,18 +50,18 @@ export default function MobileHeader({  }: I.MobileHeaderProps) {
         <S.List isOpen={isMenuOpen}>
           {isAuthenticated ? <User /> : <AuthMenu />}
   
-          <S.Anchor href="/">Home</S.Anchor>
+          <S.Anchor to="/">Home</S.Anchor>
   
           {categories.map((category) =>
-            <S.Anchor
+            <S.CategoryAnchor
               key={category}
               onClick={() => handleNavigate(category)}
             >
               {category}
-            </S.Anchor>)}
+            </S.CategoryAnchor>)}
   
-          <S.Anchor href="/contact">Contact</S.Anchor>
-          <S.Anchor href="/orders">Orders</S.Anchor>
+          <S.Anchor to="/contact">Contact</S.Anchor>
+          <S.Anchor to="/orders">Orders</S.Anchor>
   
           <S.Close onClick={handleCloseMenu}>
             <AiOutlineCloseCircle size={32} />

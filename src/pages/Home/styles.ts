@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
-import banner from 'assets/banner.jpeg';
-
 export const Container = styled.div`
   height: 100%;
-
   padding-top: 6rem;
 `;
 
@@ -88,6 +85,9 @@ export const Title = styled.h1`
 `;
 
 export const List = styled.div`
+  width: 100%;
+  height: 100%;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

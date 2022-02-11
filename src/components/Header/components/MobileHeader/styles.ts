@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.nav`
@@ -55,7 +56,7 @@ export const List = styled.div<{ isOpen?: boolean }>`
   transition: 0.5s ease;
 `;
 
-export const Anchor = styled.a`
+export const Anchor = styled(Link)`
   font-size: 1.5rem;
 
   cursor: pointer;
@@ -74,5 +75,26 @@ export const Anchor = styled.a`
     color: white;
   }
 `;
+
+export const CategoryAnchor = styled.div`
+  font-size: 1.5rem;
+
+  cursor: pointer;
+
+  width: 100%;
+  height: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-transform: capitalize;
+
+  :hover {
+    background: black;
+    color: white;
+  }
+`;
+
 
 export const Close = styled.button``;

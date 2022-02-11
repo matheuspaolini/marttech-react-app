@@ -1,4 +1,4 @@
-import { MouseEvent, useCallback, useContext, useRef } from 'react';
+import { MouseEvent, useCallback, useContext, useEffect, useRef } from 'react';
 
 import * as S from './styles';
 import * as I from './interfaces';
@@ -11,9 +11,10 @@ import { Account } from 'context/Auth/interfaces';
 import { AuthContext } from 'context/Auth';
 
 import { GoArrowSmallLeft } from 'react-icons/go';
+import { toast } from 'react-toastify';
 
 export default function Register({  }: I.AuthProps) {
-  const { createAccount, isAuthenticated } = useContext(AuthContext);
+  const { accounts, createAccount, isAuthenticated, setIsAuthenticated, setEmail } = useContext(AuthContext);
 
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -26,22 +27,35 @@ export default function Register({  }: I.AuthProps) {
 
     if (!form) return;
 
-    const { username, email, address, cpf, password, confirmPassword } = form;
+    const { username, email, city, cpf, password, confirmPassword } = form;
+
+    const accountAlreadyExists = accounts.find((account) => account.email === email.value);
+
+    if (accountAlreadyExists) {
+      toast.error('E-mail already taken!');
+      return;
+    }
 
     const newAccount: Account = ({
       username: username.value,
       email: email.value,
-      address: address.value,
+      city: city.value,
       cpf: cpf.value,
       password: password.value,
       cartItems: [],
     });
 
     createAccount(newAccount);
-  }, [createAccount]);
 
+    setEmail(email.value);
+    setIsAuthenticated(true);
 
-  if (isAuthenticated) navigate('/');
+    toast.success(`Welcome to MShop, ${username.value}! :)`);
+  }, [createAccount, accounts]);
+
+  useEffect(() => {
+    isAuthenticated && navigate('/');
+  }, [isAuthenticated]);
   
   return (
     <S.Container>
@@ -52,32 +66,32 @@ export default function Register({  }: I.AuthProps) {
 
         <S.Wrapper>
           <S.Label>Name</S.Label>
-          <S.Input name="username" type="text" />
+          <S.Input name="username" type="text" defaultValue="Matheus" />
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>E-mail</S.Label>
-          <S.Input name="email" type="email" />
+          <S.Input name="email" type="email" defaultValue="matheus@gmail.com" />
         </S.Wrapper>
 
         <S.Wrapper>
-          <S.Label>Address</S.Label>
-          <S.Input name="address" type="text" />
+          <S.Label>City</S.Label>
+          <S.Input name="city" type="text" defaultValue="Curitiba" />
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>CPF</S.Label>
-          <S.Input name="cpf" type="text" />
+          <S.Input name="cpf" type="text" defaultValue="172.470.090-12" /> {/* Random CPF */}
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>Password</S.Label>
-          <S.Input name="password" type="password" />
+          <S.Input name="password" type="password" defaultValue="123123" />
         </S.Wrapper>
 
         <S.Wrapper>
           <S.Label>Confirm Password</S.Label>
-          <S.Input name="confirmPassword" type="password" />
+          <S.Input name="confirmPassword" type="password" defaultValue="123123" />
         </S.Wrapper>
 
         <S.Button onClick={handleSubmit}>REGISTER</S.Button>
@@ -87,7 +101,7 @@ export default function Register({  }: I.AuthProps) {
         <S.Login>Already have an account?</S.Login>
       </Link>
 
-      <S.Back href="/">
+      <S.Back to="/">
         <GoArrowSmallLeft size="1.5rem" />
         Back to Home page.
       </S.Back>

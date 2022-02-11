@@ -5,7 +5,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  gap: 1.5rem;
+  gap: 1rem;
 `;
 
 export const Username = styled.div`
@@ -48,8 +48,18 @@ export const Cart = styled.button<{ isNotEmpty?: boolean }>`
 
     color: white;
 
-
-
     font-size: 0.875rem;
   }
+`;
+
+export const Exit = styled.button`
+  font-size: 0.75rem;
+
+  background: red;
+
+  color: white;
+
+  padding: 0.25rem;
+
+  border-radius: 0.25rem;
 `;

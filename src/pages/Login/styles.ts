@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import banner from 'assets/banner.jpeg';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   height: 100%;
@@ -79,7 +80,7 @@ export const Register = styled.button`
   text-decoration: underline;
 `;
 
-export const Back = styled.a`
+export const Back = styled(Link)`
   margin-top: 1rem;
 
   display: flex;
