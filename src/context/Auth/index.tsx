@@ -11,6 +11,47 @@ export default function AuthProvider({ children }: I.AuthProviderProps) {
   const [email, setEmail] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const insertAccountInLocalStorage = useCallback((account: I.Account) => {
+    const stringfiedAccounts = localStorage.getItem('_accounts');
+
+    if (!stringfiedAccounts)
+      return localStorage.setItem('_accounts', '[' + JSON.stringify(account) + ']');
+
+    const previousAccounts: I.Account[] = JSON.parse(stringfiedAccounts);
+
+    const newAccounts = ([...previousAccounts, account]);
+
+    const stringfiedNewAccounts = JSON.stringify(newAccounts);
+
+    localStorage.setItem('_accounts', stringfiedNewAccounts);
+  }, []);
+
+  const updateAccountCartItemsInLocalStorage = useCallback((email: string, cartItems: CartItem[]) => {
+    const stringfiedAccounts = localStorage.getItem('_accounts');
+
+    if (!stringfiedAccounts) return;
+    
+    const accounts: I.Account[] = JSON.parse(stringfiedAccounts);
+    
+    const account = accounts.find((account) => account.email === email);
+
+    if (!account) return;
+
+    account.cartItems = cartItems;
+
+    const newStringfiedAccounts = JSON.stringify(accounts);
+
+    localStorage.setItem('_accounts', newStringfiedAccounts);
+  }, []);
+
+  const insertEmailInLocalStorage = useCallback((email: string) => {
+    localStorage.setItem('_auth', email);
+  }, []);
+
+  const removeEmailFromLocalStorage = useCallback(() => {
+    localStorage.setItem('_auth', '');
+  }, []);
+
   const [accounts, setAccounts] = useState<I.Account[]>([
     {
       username: 'Name Example',
@@ -67,11 +108,14 @@ export default function AuthProvider({ children }: I.AuthProviderProps) {
 
     setEmail(account.email);
     setIsAuthenticated(true);
+
+    insertEmailInLocalStorage(account.email);
   }, [accounts]);
 
   const exitAccount = useCallback(() => {
     setEmail('');
     setIsAuthenticated(false);
+    removeEmailFromLocalStorage();
   }, []);
 
   const createAccount = useCallback((account: I.Account) => {
@@ -82,7 +126,9 @@ export default function AuthProvider({ children }: I.AuthProviderProps) {
     if (accountAlreadyExists) return;
     
     setAccounts((previous) => ([...previous, account]));
-  }, [accounts]);
+    insertAccountInLocalStorage(account);
+    insertEmailInLocalStorage(account.email);
+  }, [accounts, insertAccountInLocalStorage]);
 
   const updateCart = useCallback((email: string, cartItems: CartItem[]) => {
     const newAccountsState = [...accounts];
@@ -93,7 +139,29 @@ export default function AuthProvider({ children }: I.AuthProviderProps) {
     account.cartItems = cartItems;
 
     setAccounts(newAccountsState);
+    updateAccountCartItemsInLocalStorage(email, cartItems);
   }, [accounts]);
+
+  useEffect(() => {
+    const stringfiedAccounts = localStorage.getItem('_accounts');
+
+    if (!stringfiedAccounts) return localStorage.setItem('_accounts', '');
+    
+    const accounts: I.Account[] = JSON.parse(stringfiedAccounts);
+
+    console.log(accounts);
+
+    setAccounts(accounts);
+  }, []);
+
+  useEffect(() => {
+    const email = localStorage.getItem('_auth');
+
+    if (!email) return;
+
+    setEmail(email);
+    setIsAuthenticated(true); 
+  }, []);
 
   const AuthProviderValues = ({
     email,

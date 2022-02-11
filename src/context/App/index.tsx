@@ -11,7 +11,7 @@ export default function AppProvider({ children }: I.AppProviderProps) {
   const { accounts, isAuthenticated, email, updateCart } = useContext(AuthContext);
 
   const currentAccount = accounts
-    .find((account) => account.email === email);
+    ?.find((account) => account.email === email);
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<I.CartItem[]>([]);
