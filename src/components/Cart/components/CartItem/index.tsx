@@ -9,7 +9,7 @@ import Quantity from './components/Quantity';
 
 import { AppContext } from 'context/App';
 
-export default function CartItem({ id, title, price, image }: I.CartItemProps) {
+export default function CartItem({ id, title, price, image, quantity }: I.CartItemProps) {
   const { removeCartItem } = useContext(AppContext);
 
   const handleRemoveCartItem = useCallback(() => removeCartItem(id), [removeCartItem]);
@@ -21,8 +21,8 @@ export default function CartItem({ id, title, price, image }: I.CartItemProps) {
   
         <S.Wrapper>
           <S.Name title={title}>{title}</S.Name>
-          <S.Price>R$ {price}</S.Price>
-          {/* <S.Subtotal>Subtotal: R$ 30,00</S.Subtotal> */}
+          <S.Price>$ {price}</S.Price>
+          <S.Subtotal>x {quantity} = $ {price * quantity} </S.Subtotal>
         </S.Wrapper>
       </S.Flex>
 

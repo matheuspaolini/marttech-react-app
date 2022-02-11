@@ -15,6 +15,8 @@ export default function Cart({  }: I.CartProps) {
 
   const navigate = useNavigate();
 
+  const totalPrice = cartItems.reduce((accumulator, item) => item.price + accumulator, 0);
+
   const handleFinishOrder = useCallback(() => {
     if (!cartItems.length) {
       toast.error('Your cart is currently empty. Please, add some items.');
@@ -33,7 +35,7 @@ export default function Cart({  }: I.CartProps) {
 
       <S.Main isCartOpen={isCartOpen}>
         <S.Flex>
-          <S.Title>Your Cart ({cartItemsLength})</S.Title>
+          <S.Title>Your Cart ({cartItemsLength}) | $ {totalPrice}</S.Title>
 
           <S.Close onClick={handleCloseCart}>
             Close
@@ -43,8 +45,15 @@ export default function Cart({  }: I.CartProps) {
         <S.Items>
           {!cartItemsLength && <EmptyCart />}
 
-          {cartItems.map(({ id, title, price, image }) => (
-            <CartItem key={title + id} id={id} title={title} price={price} image={image} />
+          {cartItems.map(({ id, title, price, image, quantity }) => (
+            <CartItem
+              key={title + id}
+              id={id}
+              title={title}
+              price={price}
+              image={image}
+              quantity={quantity}
+            />
           ))}
 
         </S.Items>

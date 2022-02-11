@@ -52,6 +52,8 @@ export const Name = styled.div`
 
 export const Price = styled.div``;
 
-export const Subtotal = styled.div``;
+export const Subtotal = styled.div`
+  opacity: 0.25;
+`;
 
 export const Delete = styled.button``;
