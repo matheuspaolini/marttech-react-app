@@ -15,7 +15,9 @@ export default function Cart({  }: I.CartProps) {
 
   const navigate = useNavigate();
 
-  const totalPrice = cartItems.reduce((accumulator, item) => item.price + accumulator, 0);
+  const totalPrice = cartItems
+    .reduce((accumulator, item) => (item.price * item.quantity) + accumulator, 0)
+    .toFixed(2);
 
   const handleFinishOrder = useCallback(() => {
     if (!cartItems.length) {
