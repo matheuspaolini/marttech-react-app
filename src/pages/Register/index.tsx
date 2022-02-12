@@ -29,6 +29,16 @@ export default function Register({  }: I.AuthProps) {
 
     const { username, email, city, cpf, password, confirmPassword } = form;
 
+    const fields = ['username', 'email', 'city', 'cpf', 'password', 'confirmPassword'];
+
+    const isSomeFieldEmpty = fields.some((field) => !form[field].value);
+
+    if (isSomeFieldEmpty) {
+      toast.error('Please complete all fields.');
+
+      return;
+    }
+
     const accountAlreadyExists = accounts.find((account) => account.email === email.value);
 
     if (accountAlreadyExists) {
