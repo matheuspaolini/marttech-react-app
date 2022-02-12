@@ -11,7 +11,7 @@ export default function OrderItem({ order }: I.OrderItemProps) {
   );
 
   const totalPrice = order.cartItems
-    .reduce((accumulator, item) => item.price + accumulator, 0)
+    .reduce((accumulator, item) => (item.price * item.quantity) + accumulator, 0)
     .toFixed(2);
 
   return (
